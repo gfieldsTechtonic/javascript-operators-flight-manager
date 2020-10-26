@@ -24,7 +24,15 @@ function Util() {
         return sum;
     }
 
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers};
+    function checkInput(input){
+
+        if(typeof input != "Number"){
+
+            throw new Exception("");
+        }
+    }
+
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput};
 }
 
 module.exports = Util();
