@@ -12,7 +12,19 @@ function Util() {
         return sum;
     }
 
-    return {calculateTotalDistributedPassengers};
+    function calculateTotalNumberOfPassengers(passengers){
+
+        var sum = 0;
+
+        for(var i = 0; i < passengers.length; i++){
+
+            sum += passengers[i]; 
+        }
+
+        return sum;
+    }
+
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers};
 }
 
 module.exports = Util();
