@@ -1,15 +1,15 @@
 function Flights() {
 
-    function calculateNumberOfFlights(numberOfPassengers, flightCapacity){
+    function calculateNumberOfFlights(passengers, flightCapacity){
 
-        if(numberOfPassengers < 0){
+        if(passengers < 0 || (!Number.isInteger(Number(passengers)))){
             throw new Error("The number of passengers must be a positive integer value");
         }   
-        else if(flightCapacity < 0){
+        else if(flightCapacity < 0  || (!Number.isInteger(Number(flightCapacity)))){
             throw new Error("The capacity of the flight must be a positive integer value");
         }
         else{
-            return Math.ceil(numberOfPassengers / flightCapacity);
+            return Math.ceil(passengers / flightCapacity);
         }
     }
 
