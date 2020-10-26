@@ -1,10 +1,10 @@
 function Flights() {
 
-    function calculateNumberOfFLights(numberOfPassengers, flightCapacity){
+    function calculateNumberOfFlights(numberOfPassengers, flightCapacity){
         return Math.ceil(numberOfPassengers / flightCapacity);
     }
 
-    return{calculateNumberOfFLights};
+    return{calculateNumberOfFlights};
 }
 
 module.exports = Flights();
