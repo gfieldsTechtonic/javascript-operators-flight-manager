@@ -75,7 +75,7 @@ function Passengers() {
 
         if(leftOverSeats <= 0){
 
-            regEconTemp = (regSeats);
+            regEconTemp = (econSeats);
             reg -= regEconTemp;
             econSeats = 0;
         }
