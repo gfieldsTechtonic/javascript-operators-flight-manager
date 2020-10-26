@@ -26,67 +26,80 @@ function Passengers() {
         regBusinessTemp = 0;
         regEconTemp = 0;
 
-        if(vip < businessSeats){
+        var leftOverSeats = distributeSeats(businessSeats, vip);
 
-            vipBusinessTemp += vip;
-            businessSeats -= vip;
-            vip = 0;
+        if(leftOverSeats <= 0){
+
+            vipBusinessTemp = (businessSeats);
+            vip -= vipBusinessTemp;
+            businessSeats = 0;
         }
         else{
 
-            vipBusinessTemp = businessSeats;
-            vip -= businessSeats;
-            businessSeats = 0;
-
-            if(vip < econSeats){
-                
-                vipEconTemp += vip;
-                econSeats -= vip;
-                vip = 0;
-            }
-            else{
-
-                vipEconTemp = econSeats;
-                vip -= econSeats;
-                econSeats = 0;
-            }
+            vipBusinessTemp = (businessSeats - leftOverSeats);
+            vip -= vipBusinessTemp;
+            businessSeats = leftOverSeats;
         }
 
-        if(reg < businessSeats){
+        leftOverSeats = distributeSeats(econSeats, vip);
 
-            regBusinessTemp += reg;
-            businessSeats -= reg;
-            vip = 0;
+        if(leftOverSeats <= 0){
+
+            vipEconTemp = (econSeats);
+            vip -= vipEconTemp;
+            econSeats = 0;
         }
         else{
 
-            regBusinessTemp = businessSeats;
-            reg -= businessSeats;
+            vipEconTemp = (econSeats - leftOverSeats);
+            vip -= vipEconTemp;
+            econSeats = leftOverSeats;
+        }
+
+        leftOverSeats = distributeSeats(businessSeats, reg);
+
+        if(leftOverSeats <= 0){
+
+            regBusinessTemp = (businessSeats);
+            reg -= regBusinessTemp;
             businessSeats = 0;
+        }
+        else{
 
-            if(reg < econSeats){
-                
-                regEconTemp += reg;
-                econSeats -= reg;
-                vip = 0;
-            }
-            else{
+            regBusinessTemp = (businessSeats - leftOverSeats);
+            reg -= regBusinessTemp;
+            businessSeats = leftOverSeats;
+        }
 
-                regEconTemp = econSeats;
-                reg -= econSeats;
-                econSeats = 0;
-            }
+        leftOverSeats = distributeSeats(econSeats, reg);
+
+        if(leftOverSeats <= 0){
+
+            regEconTemp = (regSeats);
+            reg -= regEconTemp;
+            econSeats = 0;
+        }
+        else{
+
+            regEconTemp = (econSeats - leftOverSeats);
+            reg -= regEconTemp;
+            econSeats = leftOverSeats;
         }
 
         var seatList = {
 
-            vipBusiness: vipBusinessTemp,
-            vipEcon: vipEconTemp,
-            regBusiness: regBusinessTemp,
-            regEcon: regEconTemp
+            vipPassengersWithBusinessSeats: vipBusinessTemp,
+            vipPassengersWithEconomySeats: vipEconTemp,
+            regularPassengersWithBusinessSeats: regBusinessTemp,
+            regularPassengersWithEconomySeats: regEconTemp
         };
 
         return seatList;
+    }
+
+    function distributeSeats(seats, passengers){
+
+        return seats - passengers;
     }
 
     return {checkFlightCapacity, distributeAllSeatsToAllPassengers};
