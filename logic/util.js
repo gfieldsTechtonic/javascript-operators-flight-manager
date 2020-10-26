@@ -6,7 +6,7 @@ function Util() {
 
         for(var x in seatList){
 
-            sum += x;
+            sum += seatList[x];
         }
 
         return sum;
