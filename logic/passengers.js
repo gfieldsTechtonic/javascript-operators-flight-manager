@@ -16,7 +16,7 @@ function Passengers() {
         return sum;
     }
 
-    return checkFlightCapacity;
+    return {checkFlightCapacity};
 }
 
 module.exports = Passengers();
