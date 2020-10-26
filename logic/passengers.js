@@ -9,9 +9,10 @@ function Passengers() {
             sum += passengers[i];
         }
 
-        if(flightCapacity < passengers){
-            throw new Error("Flight capacity (" + flightCapacity + ") exceeded. You have " + passengersNumber + " passengers.");
+        if(flightCapacity < sum){
+            throw new Error("");
         }
+
         return sum;
     }
 
