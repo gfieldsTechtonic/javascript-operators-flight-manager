@@ -43,11 +43,6 @@ function Prices() {
 
         price = Math.round(price * 100) / 100;
 
-        console.log(base);
-        console.log(passType);
-        console.log(flightType);
-        console.log(price);
-
         return price;
     }
 
