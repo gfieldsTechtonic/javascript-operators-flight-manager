@@ -15,5 +15,8 @@ function Passengers() {
 
         return sum;
     }
+
+    return checkFlightCapacity;
 }
 
+module.exports = Passengers();
