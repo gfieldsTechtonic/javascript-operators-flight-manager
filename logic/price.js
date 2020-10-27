@@ -14,39 +14,39 @@ function Prices() {
 
     function calculateDefaultFinalPrice(base, passType, flightType){
 
-        var regularWeight = 1 + -.05;
-        var vipWeight = 1 + .05;
-        var econWeight = 1 + -.03;
-        var businessWeight = 1 + .1;
-        var price = base;
+        var passTypeWeight = 0;
+        var flightTypeWeight = 0;
 
         passType = passType.toLowerCase();
         flightType = flightType.toLowerCase();
 
         if(passType == "regular"){
 
-            price *= regularWeight;
+            passTypeWeight = -5;
         }
         else if(passType == "vip"){
 
-            price *= vipWeight;
+            passTypeWeight = 5;;
         }
 
         if(flightType == "economy"){
 
-            price *= econWeight;
+            flightTypeWeight = -3;
         }
         else if(flightType == "business"){
 
-            price *= businessWeight;
+            flightTypeWeight = 10;
         }
 
-        price = Math.round(price * 100) / 100;
-
-        return price;
+        return calculateFinalPrice(base, passTypeWeight, flightTypeWeight);
     }
 
-    return {calculateFinalPrice, calculateDefaultFinalPrice};
+    function calculateTotalFinalPrice(seats, passType, flightType, base){
+
+        return seats * calculateDefaultFinalPrice(base, passType, flightType)
+    }
+
+    return {calculateFinalPrice, calculateDefaultFinalPrice, calculateTotalFinalPrice};
 }
 
 module.exports = Prices();
